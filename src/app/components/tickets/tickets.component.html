@@ -1,0 +1,71 @@
+<section id="billetterie" class="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+  <div class="max-w-6xl mx-auto">
+    <h2
+      class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800"
+      appAos="fade-up"
+    >
+      Billetterie
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      @for (ticket of tickets; track ticket; let i = $index) {
+        <div
+          [class.border-orange-500]="ticket.popular"
+          class="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow text-center"
+          appAos="fade-up"
+          [aosDelay]="i * 150"
+        >
+          @if (ticket.popular) {
+            <div class="bg-orange-500 text-white text-center py-2 font-bold">
+              Le plus populaire
+            </div>
+          }
+
+          <div class="p-6" [class]="ticket.cardStyle">
+            <div class="text-4xl mb-4">{{ ticket.icon }}</div>
+            <h3 class="text-xl font-bold text-center mb-4">
+              {{ ticket.type }}
+            </h3>
+            <p class="text-3xl font-bold text-center mb-6">
+              {{ ticket.price }}
+            </p>
+            <ul class="space-y-3">
+              @for (feature of ticket.features; track feature) {
+                <li class="flex items-center">
+                  <!--
+                  <svg
+                    class="h-5 w-5 text-green-500 mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                    </svg> -->
+                  {{ feature }}
+                </li>
+              }
+            </ul>
+            <button
+              class="mt-6 w-full bg-orange-600 text-white py-2 rounded-md hover:bg-orange-700 transition-colors"
+            >
+              Acheter maintenant
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="mt-12 text-center text-gray-600" data-aos="fade-up">
+      <p><strong>Lieu :</strong> Centre de Congrès de Brazzaville</p>
+      <p>
+        <strong>Code vestimentaire :</strong> Tenue traditionnelle ou moderne
+        élégante
+      </p>
+    </div>
+  </div>
+</section>

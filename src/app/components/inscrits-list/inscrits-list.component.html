@@ -1,0 +1,80 @@
+<h3 class="m-[100px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  List des participants inscrits:
+</h3>
+
+<div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+  <div class="overflow-x-auto">
+    <table class="w-full">
+      <thead class="bg-orange-600">
+        <tr>
+          <th
+            class="py-4 px-6 text-left font-medium text-black-700 border-r border-gray-200"
+          >
+            Nom Complet
+          </th>
+          <th
+            class="py-4 px-6 text-left font-medium text-black-700 border-r border-gray-200"
+          >
+            Téléphone
+          </th>
+          <th class="py-4 px-6 text-left font-medium text-black-700">Statut</th>
+          <th class="py-4 px-6 text-left font-medium text-black-700">
+            Date inscription
+          </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <tr
+          *ngFor="let user of users"
+          class="hover:bg-gray-50 transition-colors"
+        >
+          <td
+            class="py-4 px-6 font-medium text-gray-900 border-r border-gray-200"
+          >
+            {{ user.fullName }}
+          </td>
+          <td class="py-4 px-6 text-gray-600 border-r border-gray-200">
+            {{ user.phoneNumber }}
+          </td>
+          <td class="py-4 px-6 text-gray-600 border-r border-gray-200">
+            <span
+              [ngClass]="{
+                'bg-blue-100 text-blue-800': user.statut === 'Visiteur RDC',
+                'bg-purple-100 text-purple-800': user.statut === 'Artiste',
+                'bg-green-100 text-green-800': user.statut === 'Exposant',
+                'bg-yellow-100 text-yellow-800': user.statut === 'Mannequin',
+                'bg-red-100 text-red-800': user.statut === 'Styliste',
+              }"
+              class="px-3 py-1 rounded-full text-xs font-semibold"
+            >
+              {{ user.statut }}
+            </span>
+          </td>
+          <td class="py-4 px-6">{{ user.dateInscription }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="users.length === 0" class="text-center py-12 text-gray-500">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-12 w-12 mx-auto text-gray-400"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+      />
+    </svg>
+    <p class="mt-4 text-gray-600">Aucun utilisateur enregistré</p>
+  </div>
+</div>
+
+<!-- <button (click)="loadUsers()" [disabled]="loading || noMoreData">
+  {{ loading ? "Loading..." : noMoreData ? "No More Data" : "Load More" }}
+</button> -->

@@ -1,0 +1,114 @@
+<nav class="fixed top-0 w-full bg-white shadow-lg z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex-shrink-0">
+        <h1
+          class="text-xl font-bold text-orange-600 cursor-pointer"
+          routerLink="/home"
+        >
+          EXPO AFRICA 2025
+        </h1>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-4">
+          <a
+            routerLink="#accueil"
+            routerLinkActive="active-link"
+            class="nav-link text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+          >
+            Accueil
+          </a>
+          <!-- Other nav links -->
+          <a
+            href="#apropos"
+            class="nav-link text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >À propos</a
+          >
+          <a
+            href="#programme"
+            class="nav-link text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >Programme</a
+          >
+          <a
+            href="#billetterie"
+            class="nav-link text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >Billetterie</a
+          >
+          <a
+            href="#galerie"
+            class="nav-link text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >Galerie</a
+          >
+          <a
+            href="#inscription"
+            class="bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition-colors"
+            >S'inscrire</a
+          >
+        </div>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button
+          (click)="toggleMobileMenu()"
+          class="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-700 hover:text-orange-600 focus:outline-none"
+          aria-label="Menu de navigation"
+        >
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div [class.hidden]="!mobileMenuOpen" class="md:hidden">
+    <div class="px-2 pt-2 pb-3 space-y-2 bg-white shadow-lg">
+      <a
+        routerLink="#accueil"
+        class="mobile-menu-item block px-3 py-4 min-h-[48px] flex items-center text-gray-700 hover:text-orange-600 rounded-md text-base font-medium transition-colors"
+      >
+        Accueil
+      </a>
+      <!-- Other mobile links -->
+      <a
+        href="#apropos"
+        class="mobile-menu-item block px-3 py-4 min-h-[48px] flex items-center text-gray-700 hover:text-orange-600 rounded-md text-base font-medium transition-colors"
+        >À propos</a
+      >
+      <a
+        href="#programme"
+        class="mobile-menu-item block px-3 py-4 min-h-[48px] flex items-center text-gray-700 hover:text-orange-600 rounded-md text-base font-medium transition-colors"
+        >Programme</a
+      >
+      <a
+        href="#billetterie"
+        class="mobile-menu-item block px-3 py-4 min-h-[48px] flex items-center text-gray-700 hover:text-orange-600 rounded-md text-base font-medium transition-colors"
+        >Billetterie</a
+      >
+      <a
+        href="#galerie"
+        class="mobile-menu-item px-3 py-4 min-h-[48px] flex items-center text-gray-700 hover:text-orange-600 rounded-md text-base font-medium transition-colors"
+        >Galerie</a
+      >
+      <a
+        href="#inscription"
+        class="mobile-menu-item px-3 py-4 min-h-[48px] flex items-center bg-orange-600 text-white rounded-md text-base font-medium hover:bg-orange-700 transition-colors"
+        >S'inscrire</a
+      >
+    </div>
+  </div>
+</nav>

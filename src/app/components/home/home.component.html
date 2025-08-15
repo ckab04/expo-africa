@@ -1,0 +1,39 @@
+<section
+  id="accueil"
+  class="relative min-h-screen flex items-center justify-center custom-gradient text-white"
+>
+  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8">
+    <h1
+      class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6"
+      appAos="fade-up"
+    >
+      > EXPO AFRICA BRAZZAVILLE 2025
+    </h1>
+    <p
+      class="text-xl sm:text-2xl mb-8 max-w-3xl mx-auto"
+      appAos="fade-up"
+      [aosDelay]="200"
+    >
+      La plus grande exposition d'art et de culture africaine
+    </p>
+    <div class="text-lg sm:text-xl mb-8" appAos="fade-up" [aosDelay]="400">
+      <p>24 - 26 Octobre 2025</p>
+      <p>Brazzaville, République du Congo</p>
+    </div>
+    <a
+      href="#inscription"
+      class="bg-white text-orange-600 px-8 py-4 sm:py-3 min-h-[48px] sm:min-h-[44px] flex items-center justify-center rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors"
+      appAos="fade-up"
+      [aosDelay]="600"
+    >
+      S'inscrire maintenant
+    </a>
+  </div>
+</section>
+<app-about></app-about>
+<app-expo-program></app-expo-program>
+<app-tickets></app-tickets>
+<app-gallery></app-gallery>
+<app-registration></app-registration>
+<app-partners></app-partners>

@@ -6,7 +6,8 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class UsersService {
-  private apiUrl = "http://localhost:8085/inscrits/tous-inscrits";
+  //private apiUrl = "http://localhost:8085/inscrits/tous-inscrits";
+  private apiUrl = "http://vps744712.ovh.net:8085/inscrits/tous-inscrits";
 
   constructor(private http: HttpClient) {}
 

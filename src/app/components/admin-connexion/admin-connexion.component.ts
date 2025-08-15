@@ -26,7 +26,7 @@ export class AdminConnexionComponent {
         //alert("User logged in successfully");
         this.router.navigateByUrl("/dashboard");
       },
-      error: (err) => alert("Login failed"),
+      error: (err) => console.error("Login failed"),
     });
   }
 }

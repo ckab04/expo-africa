@@ -7,7 +7,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class RegistrationService {
   //registrationUrl = "http://localhost:8085/inscrits/inscription";
-  registrationUrl = "http://vps744712.ovh.net:8085/inscrits/inscription";
+  registrationUrl = "https://vps744712.ovh.net:8085/inscrits/inscription";
 
   constructor(private http: HttpClient) {}
 

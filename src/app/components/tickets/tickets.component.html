@@ -37,6 +37,7 @@
               }
             </ul>
             <button
+              (click)="selectTicket(ticket)"
               class="mt-6 w-full bg-orange-600 text-white py-2 rounded-md hover:bg-orange-700 transition-colors"
             >
               Acheter maintenant
@@ -56,7 +57,7 @@
   </div>
 </section>
 
-<!-- Booking Modal (separate from tickets display) -->
+<!-- Booking Modal (separate from tickets display) @if (showForm && selectedTicket) { -->
 @if (showForm && selectedTicket) {
   <div
     class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"

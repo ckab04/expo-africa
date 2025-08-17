@@ -1,6 +1,12 @@
 import { Component } from "@angular/core";
 import { AosDirective } from "../../directives/aos.directive";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { HelperService } from "../../services/helper.service";
 import { StorageService } from "../../services/storage.service";
@@ -8,12 +14,12 @@ import { TicketConfirmationDialogComponent } from "./ticket-confirmation-dialog/
 
 @Component({
   selector: "app-tickets",
-  imports: [AosDirective],
+  imports: [AosDirective, FormsModule, ReactiveFormsModule],
   templateUrl: "./tickets.component.html",
   styleUrl: "./tickets.component.css",
 })
 export class TicketsComponent {
-  whatsappNumber = "+237XXXXXXXXX"; // Replace with actual Cameroon number
+  whatsappNumber = "+242050109403"; // Replace with actual Cameroon number
   showForm = false;
   selectedTicket: Ticket | null = null;
 
@@ -91,6 +97,7 @@ export class TicketsComponent {
   ];
 
   selectTicket(ticket: Ticket): void {
+    console.log("Selected ticket: ", ticket);
     this.selectedTicket = ticket;
     this.showForm = true;
     this.ticketForm.reset({ quantity: 1 });
@@ -107,6 +114,9 @@ export class TicketsComponent {
       .replace("{phone}", formData.phone || "")
       .replace("{email}", formData.email || "")
       .replace("{quantity}", formData.quantity?.toString() || "1");
+    console.log(
+      `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(message)}`,
+    );
 
     return `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(message)}`;
   }

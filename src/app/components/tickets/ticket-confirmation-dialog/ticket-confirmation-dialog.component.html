@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Confirmer votre réservation</h2>
+
+<div mat-dialog-content class="space-y-4">
+  <div class="bg-gray-50 p-4 rounded-md">
+    <h3 class="font-bold text-lg">{{ data.ticket.type }}</h3>
+    <p class="text-gray-600">
+      {{ data.ticket.price }} × {{ data.formData.quantity }}
+    </p>
+    <p class="font-bold text-xl mt-2">
+      Total: {{ calculateTotal() | number }} FCFA
+    </p>
+  </div>
+
+  <div class="space-y-2">
+    <p><span class="font-semibold">Nom:</span> {{ data.formData.name }}</p>
+    <p>
+      <span class="font-semibold">Téléphone:</span> {{ data.formData.phone }}
+    </p>
+    <p *ngIf="data.formData.email">
+      <span class="font-semibold">Email:</span> {{ data.formData.email }}
+    </p>
+  </div>
+
+  <p class="text-sm text-gray-600">
+    Vous serez redirigé vers WhatsApp pour finaliser votre paiement.
+  </p>
+</div>
+
+<div mat-dialog-actions class="flex justify-end gap-2 pt-4">
+  <button
+    mat-stroked-button
+    (click)="onCancel()"
+    class="border-gray-300 text-gray-700"
+  >
+    Annuler
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onConfirm()"
+    class="bg-green-600 text-white"
+  >
+    Confirmer
+  </button>
+</div>

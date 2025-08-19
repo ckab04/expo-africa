@@ -136,7 +136,10 @@ export class TicketsComponent {
     dialogRef.afterClosed().subscribe((confirmed) => {
       if (confirmed) {
         this.saveReservation();
-        this.helperService.openExternalUrl(this.getWhatsAppUrl());
+        //this.helperService.openExternalUrl(this.getWhatsAppUrl());
+        setTimeout(() => {
+          window.location.href = this.getWhatsAppUrl();
+        }, 100);
       }
     });
   }

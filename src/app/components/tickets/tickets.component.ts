@@ -117,8 +117,10 @@ export class TicketsComponent {
     console.log(
       `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(message)}`,
     );
+    const encodedMessage = encodeURIComponent(message);
 
-    return `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(message)}`;
+    //return `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(message)}`;
+    return `https://api.whatsapp.com/send?phone=${this.whatsappNumber}&text=${encodedMessage}`;
   }
 
   confirmPurchase(): void {

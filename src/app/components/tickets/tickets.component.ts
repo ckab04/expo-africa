@@ -126,24 +126,33 @@ export class TicketsComponent {
   confirmPurchase(): void {
     if (this.ticketForm.invalid || !this.selectedTicket) return;
 
-    const dialogRef = this.dialog.open(TicketConfirmationDialogComponent, {
-      width: "500px",
-      data: {
-        ticket: this.selectedTicket,
-        formData: this.ticketForm.value,
-        whatsappLink: this.getWhatsAppUrl(),
-      },
-    });
+    this.saveReservation();
+    const whatsappUrl = this.getWhatsAppUrl();
+    console.log("Redirecting to WhatsApp:", whatsappUrl);
 
-    dialogRef.afterClosed().subscribe((confirmed) => {
-      if (confirmed) {
-        this.saveReservation();
-        //this.helperService.openExternalUrl(this.getWhatsAppUrl());
-        setTimeout(() => {
-          window.location.href = this.getWhatsAppUrl();
-        }, 100);
-      }
-    });
+    // Mobile-compatible redirect
+    setTimeout(() => {
+      window.location.href = whatsappUrl;
+    }, 100);
+
+    // const dialogRef = this.dialog.open(TicketConfirmationDialogComponent, {
+    //   width: "500px",
+    //   data: {
+    //     ticket: this.selectedTicket,
+    //     formData: this.ticketForm.value,
+    //     whatsappLink: this.getWhatsAppUrl(),
+    //   },
+    // });
+
+    // dialogRef.afterClosed().subscribe((confirmed) => {
+    //   if (confirmed) {
+    //     this.saveReservation();
+    //     //this.helperService.openExternalUrl(this.getWhatsAppUrl());
+    //     setTimeout(() => {
+    //       window.location.href = this.getWhatsAppUrl();
+    //     }, 100);
+    //   }
+    // });
   }
 
   private saveReservation(): void {

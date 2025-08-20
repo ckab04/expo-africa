@@ -20,18 +20,12 @@ export class HelperService {
    * @param type Type of notification (success, error, info)
    * @param duration Duration in milliseconds
    */
-  showNotification(
-    message: string,
-    type: "success" | "error" | "info" = "info",
-    duration: number = 3000,
-  ): void {
+  showNotification(message: string, type: string = "success"): void {
+    const notificationType = type || "success";
+
     this.snackBar.open(message, "Fermer", {
-      duration,
-      panelClass: [
-        type === "success" ? "bg-green-500" : "",
-        type === "error" ? "bg-red-500" : "",
-        type === "info" ? "bg-blue-500" : "",
-      ],
+      duration: 5000,
+      panelClass: [`notification-${notificationType}`],
       horizontalPosition: "right",
       verticalPosition: "top",
     });

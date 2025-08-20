@@ -175,11 +175,11 @@ export class TicketsComponent {
     reservations.push(reservationData);
     this.storageService.saveData("reservations", reservations);
 
-    this.helperService.showNotification(
-      `Réservation pour ${formData.quantity} billet(s) ${this.selectedTicket!.type} enregistrée !`,
-      "success",
-    );
-
+    // this.helperService.showNotification(
+    //   `Réservation pour ${formData.quantity} billet(s) ${this.selectedTicket!.type} enregistrée !`,
+    //   "success",
+    // );
+    console.log("Reservation saved:", reservationData);
     this.showForm = false;
     this.selectedTicket = null;
   }

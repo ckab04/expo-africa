@@ -63,7 +63,13 @@ export class HelperService {
    * @param phone Phone number to validate
    */
   validatePhoneNumber(phone: string): boolean {
-    const regex = /^(?:(?:\+|00)237|237)?\s*[6-9]\d{8}$/;
+    const regex = /^(?:(?:\+|00)242|242)?\s*[6-9]\d{8}$/;
     return regex.test(phone);
+  }
+
+  isMobileDevice(): boolean {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent,
+    );
   }
 }

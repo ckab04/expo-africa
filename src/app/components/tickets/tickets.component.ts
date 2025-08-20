@@ -19,7 +19,7 @@ import { TicketConfirmationDialogComponent } from "./ticket-confirmation-dialog/
   styleUrl: "./tickets.component.css",
 })
 export class TicketsComponent {
-  whatsappNumber = "+242050109403"; // Replace with actual Cameroon number
+  whatsappNumber = "242050109403"; // Replace with actual Cameroon number
   showForm = false;
   selectedTicket: Ticket | null = null;
 
@@ -120,7 +120,9 @@ export class TicketsComponent {
     const encodedMessage = encodeURIComponent(message);
 
     //return `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(message)}`;
-    return `https://api.whatsapp.com/send?phone=${this.whatsappNumber}&text=${encodedMessage}`;
+    //return `https://api.whatsapp.com/send?phone=${this.whatsappNumber}&text=${encodedMessage}`;
+    // Format for automatic message send on whatsapp
+    return `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(message)}`;
   }
 
   confirmPurchase(): void {
@@ -130,10 +132,12 @@ export class TicketsComponent {
     const whatsappUrl = this.getWhatsAppUrl();
     console.log("Redirecting to WhatsApp:", whatsappUrl);
 
-    // Mobile-compatible redirect
-    setTimeout(() => {
+    // 3. Redirect immediately (no dialog)
+    if (this.helperService.isMobileDevice()) {
       window.location.href = whatsappUrl;
-    }, 100);
+    } else {
+      window.open(whatsappUrl, "_blank");
+    }
 
     // const dialogRef = this.dialog.open(TicketConfirmationDialogComponent, {
     //   width: "500px",
@@ -153,6 +157,9 @@ export class TicketsComponent {
     //     }, 100);
     //   }
     // });
+
+    this.showForm = false;
+    this.selectedTicket = null;
   }
 
   private saveReservation(): void {

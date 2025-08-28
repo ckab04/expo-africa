@@ -8,12 +8,14 @@ import { catchError, map, Observable, tap, throwError } from "rxjs";
 })
 export class AchatService {
   constructor(private http: HttpClient) {}
-  private achatUrl = "http://localhost:8085/expoafrica/achat";
-  private tousLesAchats = "http://localhost:8085/expoafrica/achat";
+
+  private achatUrl = "https://vps744712.ovh.net/expoafrica/achat";
+  //private achatUrl = "http://localhost:8085/expoafrica/achat";
+  //private tousLesAchats = "http://localhost:8085/expoafrica/achat";
 
   saveAchat(achatBillet: AchatBillet): Observable<string> {
-    console.log("Sending to:", this.achatUrl);
-    console.log("Payload:", achatBillet);
+    //console.log("Sending to:", this.achatUrl);
+    //console.log("Payload:", achatBillet);
     return this.http
       .post(this.achatUrl, achatBillet, {
         responseType: "text",

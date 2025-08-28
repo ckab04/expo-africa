@@ -7,8 +7,8 @@ import { jwtDecode } from "jwt-decode";
   providedIn: "root",
 })
 export class AuthService {
-  private authUrl = "http://localhost:8085/expoafrica/auth";
-  //private authUrl = "https://vps744712.ovh.net/expoafrica/auth";
+  //private authUrl = "http://localhost:8085/expoafrica/auth";
+  private authUrl = "https://vps744712.ovh.net/expoafrica/auth";
   constructor(private http: HttpClient) {}
 
   signUp(user: User): Observable<string> {

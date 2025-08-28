@@ -12,7 +12,7 @@ export class RegistrationService {
   constructor(private http: HttpClient) {}
 
   newInscription(inscrit: RegistrationData) {
-    console.log("Inscrit data: ", inscrit);
+    //console.log("Inscrit data: ", inscrit);
     this.http
       .post(this.registrationUrl, inscrit, {
         responseType: "text",

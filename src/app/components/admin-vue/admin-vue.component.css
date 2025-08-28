@@ -1,0 +1,31 @@
+/* Highlight the active tab */
+::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__content {
+  color: #2563eb !important; /* Tailwind blue-600 */
+  font-weight: bold !important;
+  border-bottom: 2px solid #2563eb; /* underline effect */
+}
+
+/* Make tabs compact */
+::ng-deep .mat-mdc-tab {
+  flex: 0 0 auto !important;
+  padding: 0 150px !important;
+  min-width: auto !important;
+}
+
+/* Center the tab labels */
+::ng-deep .mat-mdc-tab-list {
+  justify-content: center !important;
+}
+
+::ng-deep .mat-mdc-tab {
+  background-color: #f3f4f6 !important; /* light gray */
+  border-radius: 8px 8px 0 0; /* optional rounded corners */
+  margin: 0 4px; /* spacing between tabs */
+}
+
+/* Active tab */
+::ng-deep .mat-mdc-tab.mdc-tab--active {
+  background-color: #ff7518 !important; /* Tailwind blue-600 */
+  color: white !important; /* text color for contrast */
+  font-weight: bold;
+}

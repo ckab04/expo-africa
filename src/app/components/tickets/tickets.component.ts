@@ -52,7 +52,7 @@ export class TicketsComponent {
       numericPrice: 25000,
       features: ["Accès à toutes les expositions et animations"],
       cardStyle: "bg-gray-50 rounded-lg p-8 text-center",
-      whatsappTemplate: `Je souhaite réserver un billet STANDARD pour 25 000 FCFA.
+      textTemplate: `Je souhaite réserver un billet STANDARD pour 25 000 FCFA.
 
       Nom complet: {name}
       Téléphone: {phone}
@@ -69,7 +69,7 @@ export class TicketsComponent {
       numericPrice: 50000,
       features: ["Accès VIP + cocktail + places réservées"],
       cardStyle: "bg-orange-50 border-2 border-orange-200 rounded-lg p-8 ",
-      whatsappTemplate: `Je souhaite réserver un billet VIP pour 50 000 FCFA.
+      textTemplate: `Je souhaite réserver un billet VIP pour 50 000 FCFA.
 
       Nom complet: {name}
       Téléphone: {phone}
@@ -85,7 +85,7 @@ export class TicketsComponent {
       numericPrice: 100000,
       features: ["Accès VVP + dîner gala + rencontre artistes"],
       cardStyle: "bg-purple-50 border-2 border-purple-200 rounded-lg p-8",
-      whatsappTemplate: `Je souhaite réserver un billet VVP pour 100 000 FCFA.
+      textTemplate: `Je souhaite réserver un billet VVP pour 100 000 FCFA.
 
       Nom complet: {name}
       Téléphone: {phone}
@@ -107,7 +107,7 @@ export class TicketsComponent {
     if (!this.selectedTicket || !this.ticketForm.valid) return "#";
 
     const formData = this.ticketForm.value;
-    let message = this.selectedTicket.whatsappTemplate;
+    let message = this.selectedTicket.textTemplate;
 
     message = message
       .replace("{name}", formData.name || "")
@@ -128,35 +128,36 @@ export class TicketsComponent {
   confirmPurchase(): void {
     if (this.ticketForm.invalid || !this.selectedTicket) return;
 
-    this.saveReservation();
-    const whatsappUrl = this.getWhatsAppUrl();
-    console.log("Redirecting to WhatsApp:", whatsappUrl);
+    // TODO: REMOVE WHATSAPP
+    // this.saveReservation();
+    // const whatsappUrl = this.getWhatsAppUrl();
+    // console.log("Redirecting to WhatsApp:", whatsappUrl);
 
-    // 3. Redirect immediately (no dialog)
-    if (this.helperService.isMobileDevice()) {
-      window.location.href = whatsappUrl;
-    } else {
-      window.open(whatsappUrl, "_blank");
-    }
+    // // 3. Redirect immediately (no dialog)
+    // if (this.helperService.isMobileDevice()) {
+    //   window.location.href = whatsappUrl;
+    // } else {
+    //   window.open(whatsappUrl, "_blank");
+    // }
 
-    // const dialogRef = this.dialog.open(TicketConfirmationDialogComponent, {
-    //   width: "500px",
-    //   data: {
-    //     ticket: this.selectedTicket,
-    //     formData: this.ticketForm.value,
-    //     whatsappLink: this.getWhatsAppUrl(),
-    //   },
-    // });
+    const dialogRef = this.dialog.open(TicketConfirmationDialogComponent, {
+      width: "500px",
+      data: {
+        ticket: this.selectedTicket,
+        formData: this.ticketForm.value,
+        whatsappLink: this.getWhatsAppUrl(),
+      },
+    });
 
-    // dialogRef.afterClosed().subscribe((confirmed) => {
-    //   if (confirmed) {
-    //     this.saveReservation();
-    //     //this.helperService.openExternalUrl(this.getWhatsAppUrl());
-    //     setTimeout(() => {
-    //       window.location.href = this.getWhatsAppUrl();
-    //     }, 100);
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe((confirmed) => {
+      if (confirmed) {
+        //this.saveReservation();
+        //this.helperService.openExternalUrl(this.getWhatsAppUrl());
+        setTimeout(() => {
+          window.location.href = this.getWhatsAppUrl();
+        }, 100);
+      }
+    });
 
     this.showForm = false;
     this.selectedTicket = null;
@@ -200,7 +201,7 @@ export interface Ticket {
   features: string[];
   popular?: boolean;
   cardStyle?: string;
-  whatsappTemplate: string;
+  textTemplate: string;
 }
 
 interface Reservation {

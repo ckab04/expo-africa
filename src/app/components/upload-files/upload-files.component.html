@@ -1,0 +1,13 @@
+<input
+  type="file"
+  class="file-input"
+  (change)="onFileSelected($event)"
+  #fileUpload
+/>
+<div>
+  {{ fileName || "Pas de fichier téléversé." }}
+
+  <button (click)="fileUpload.click()">
+    <mat-icon>attach_file</mat-icon>
+  </button>
+</div>

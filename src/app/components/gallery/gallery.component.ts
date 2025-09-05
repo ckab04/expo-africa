@@ -1,9 +1,12 @@
 import { Component } from "@angular/core";
 import { AosDirective } from "../../directives/aos.directive";
+import { MatDialog } from "@angular/material/dialog";
+import { ImageDialogComponent } from "../image-dialog/image-dialog.component";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: "app-gallery",
-  imports: [AosDirective],
+  imports: [AosDirective, CommonModule],
   templateUrl: "./gallery.component.html",
   styleUrl: "./gallery.component.css",
 })
@@ -30,9 +33,19 @@ export class GalleryComponent {
       caption: "Exposition d'art traditionnel",
     },
   ];
+
+  constructor(private dialog: MatDialog) {}
+
+  openImage(index: number) {
+    this.dialog.open(ImageDialogComponent, {
+      data: { images: this.galleryImages, index },
+      panelClass: "custom-dialog",
+      backdropClass: "custom-backdrop",
+    });
+  }
 }
 
-interface GalleryImage {
+export interface GalleryImage {
   src: string;
   alt: string;
   caption?: string;

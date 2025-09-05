@@ -6,9 +6,9 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class MailService {
-  private mailUrl = "https://vps744712.ovh.net/expoafrica/send-email";
+  //private mailUrl = "https://vps744712.ovh.net/expoafrica/send-email";
   //registrationUrl = "https://vps744712.ovh.net/inscrits/inscription";
-  //private mailUrl = "http://localhost:8085/expoafrica/send-email";
+  private mailUrl = "http://localhost:8085/expoafrica/send-email";
 
   constructor(private http: HttpClient) {}
 
